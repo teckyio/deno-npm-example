@@ -12,6 +12,8 @@ const client: Client = new pg.Client(config)
 
 await client.connect()
 
+app.use(express.json())
+
 
 app.get('/todos', async(req, res)=>{
     const data = (await client.query("SELECT * from todos")).rows
